@@ -10,7 +10,7 @@ import axios from 'axios';
 import Home from './components/Home/Home';
 
 function App() {
-  axios.defaults.baseURL = 'http://localhost:5000';
+  axios.defaults.baseURL = 'https://app-pedidos-production-808b.up.railway.app/';
   return (
     <>
       <Stack direction="horizontal" gap={3} className='col-sm-12'>
