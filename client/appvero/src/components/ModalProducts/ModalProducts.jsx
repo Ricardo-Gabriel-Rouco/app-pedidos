@@ -44,7 +44,7 @@ function ModalProducts(props) {
   };
 
   return (
-    <Modal show={show} onHide={onClose} key={productId} centered >
+    <Modal show={show} onHide={onClose} key={productId} centered size="sm">
       <Modal.Header closeButton >
         <Modal.Title>{name}</Modal.Title>
       </Modal.Header>

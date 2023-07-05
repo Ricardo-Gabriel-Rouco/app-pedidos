@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import Stack from "react-bootstrap/Stack";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import Tooltip from "react-bootstrap/Tooltip";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { MdEditSquare, MdDelete, MdAddCircle } from "react-icons/md";
 import ModalProducts from "../ModalProducts/ModalProducts";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 function Stock() {
   const [products, setProducts] = useState([]);
@@ -84,31 +86,51 @@ function Stock() {
                   className="justify-content-around"
                 >
                   {product.quantity}
-                  <Button
-                    onClick={() =>
-                      openModal(product.id, product.name, product.quantity)
+                  <OverlayTrigger
+                    key={product.id}
+                    placement="top"
+                    overlay={
+                      <Tooltip id="tooltip-top">Modificar Stock</Tooltip>
                     }
                   >
-                    <MdEditSquare />
-                  </Button>
+                    <Button
+                      onClick={() =>
+                        openModal(product.id, product.name, product.quantity)
+                      }
+                    >
+                      <MdEditSquare />
+                    </Button>
+                  </OverlayTrigger>
                 </Stack>
               </td>
               <td className="p-2">{product.pricePerPack}</td>
               <td className="p-2">{product.pricePerUnit}</td>
               <td className="p-2">
+              <OverlayTrigger
+                  key={product.id}
+                  placement="top"
+                  overlay={<Tooltip id="tooltip-top">Editar Producto</Tooltip>}
+                >
                 <Button variant="info" size="sm">
                   <MdEditSquare />
                 </Button>
+                </OverlayTrigger>
               </td>
               <td className="p-2">
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => handleDelete(product.id)}
-                  disabled={deletedProductId === product.id}
+                <OverlayTrigger
+                  key={product.id}
+                  placement="top"
+                  overlay={<Tooltip id="tooltip-top">Eliminar Producto</Tooltip>}
                 >
-                  <MdDelete />
-                </Button>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleDelete(product.id)}
+                    disabled={deletedProductId === product.id}
+                  >
+                    <MdDelete />
+                  </Button>
+                </OverlayTrigger>
               </td>
             </tr>
           ))}

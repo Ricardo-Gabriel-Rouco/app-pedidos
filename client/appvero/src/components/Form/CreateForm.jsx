@@ -23,7 +23,7 @@ function CreateForm() {
   // esto es para el toast
   const [show, setShow] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     await axios({
@@ -31,18 +31,24 @@ function CreateForm() {
       method: "post",
       data: values,
     });
-    setShow(!show)
-    setTimeout(()=>{
-      navigate(-1)
-    }, 3000)
+    setShow(!show);
+    setTimeout(() => {
+      navigate(-1);
+    }, 3000);
   };
 
   return (
     <div className={styles.formContainer}>
-      <ToastContainer position="top-end" className="p-3" style={{zIndex: 1}} >
-      <Toast onClose={() => setShow(!show)} show={show} delay={3000} autohide bg={'success'}>
-        <Toast.Header>Producto cargado</Toast.Header>
-      </Toast>
+      <ToastContainer position="top-end" className="p-3" style={{ zIndex: 1 }}>
+        <Toast
+          onClose={() => setShow(!show)}
+          show={show}
+          delay={3000}
+          autohide
+          bg={"success"}
+        >
+          <Toast.Header>Producto cargado</Toast.Header>
+        </Toast>
       </ToastContainer>
       <Formik
         initialValues={initialValues}
@@ -52,13 +58,23 @@ function CreateForm() {
         <FormikForm>
           <Form.Group controlId="name">
             <Form.Label>Nombre:</Form.Label>
-            <Field type="text" name="name" className="form-control" />
+            <Field
+              type="text"
+              name="name"
+              className="form-control"
+              placeholder="Ej: Coca-Cola..."
+            />
             <ErrorMessage name="name" component="div" className="text-danger" />
           </Form.Group>
 
           <Form.Group controlId="productKey">
             <Form.Label>Código de Producto:</Form.Label>
-            <Field type="text" name="productKey" className="form-control" />
+            <Field
+              type="text"
+              name="productKey"
+              className="form-control"
+              placeholder="Código de barras..."
+            />
             <ErrorMessage
               name="productKey"
               component="div"
@@ -67,8 +83,13 @@ function CreateForm() {
           </Form.Group>
 
           <Form.Group controlId="description">
-            <Form.Label>Descripción:</Form.Label>
-            <Field type="text" name="description" className="form-control" />
+            <Form.Label>Presentacion:</Form.Label>
+            <Field
+              type="text"
+              name="description"
+              className="form-control"
+              placeholder="Ej: 2 litros"
+            />
             <ErrorMessage
               name="description"
               component="div"
@@ -78,7 +99,12 @@ function CreateForm() {
 
           <Form.Group controlId="brand">
             <Form.Label>Marca:</Form.Label>
-            <Field type="text" name="brand" className="form-control" />
+            <Field
+              type="text"
+              name="brand"
+              className="form-control"
+              placeholder="Ej: Coca-cola (nombre y marca pueden ser Iguales)"
+            />
             <ErrorMessage
               name="brand"
               component="div"
@@ -88,7 +114,12 @@ function CreateForm() {
 
           <Form.Group controlId="quantity">
             <Form.Label>Cantidad:</Form.Label>
-            <Field type="text" name="quantity" className="form-control" />
+            <Field
+              type="text"
+              name="quantity"
+              className="form-control"
+              placeholder="Cantidad de bultos"
+            />
             <ErrorMessage
               name="quantity"
               component="div"
@@ -98,7 +129,12 @@ function CreateForm() {
 
           <Form.Group controlId="pricePerPack">
             <Form.Label>Precio por Paquete:</Form.Label>
-            <Field type="text" name="pricePerPack" className="form-control" />
+            <Field
+              type="text"
+              name="pricePerPack"
+              className="form-control"
+              placeholder="Precio por bulto"
+            />
             <ErrorMessage
               name="pricePerPack"
               component="div"
@@ -108,7 +144,12 @@ function CreateForm() {
 
           <Form.Group controlId="pricePerUnit">
             <Form.Label>Precio por Unidad:</Form.Label>
-            <Field type="text" name="pricePerUnit" className="form-control" />
+            <Field
+              type="text"
+              name="pricePerUnit"
+              className="form-control"
+              placeholder="Precio por unidad"
+            />
             <ErrorMessage
               name="pricePerUnit"
               component="div"
