@@ -7,6 +7,7 @@ import Stock from "./components/Stock/Stock";
 import Stack from "react-bootstrap/Stack";
 import CreateForm from './components/Form/CreateForm';
 import axios from 'axios';
+import Home from './components/Home/Home';
 
 function App() {
   axios.defaults.baseURL = 'http://localhost:5000';
@@ -27,7 +28,7 @@ function App() {
         </Link>
       </Stack>
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<Home/>}/>
         <Route path="/orders" element={<Orders />} />
         <Route path="/sales" element={<Sales />} />
         <Route path="/stock" element={<Stock />} />

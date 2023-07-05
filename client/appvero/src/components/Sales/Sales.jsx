@@ -1,11 +1,10 @@
-import React from 'react'
-
+import Construction from "../Construction/Construction";
 function Sales() {
   return (
-    <div>
-      <h1>Estamos en Ventas</h1>
-    </div>
-  )
+    <>
+      <Construction />
+    </>
+  );
 }
 
-export default Sales
+export default Sales;
