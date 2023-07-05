@@ -34,7 +34,7 @@ function Stock() {
     const product = {
       id: productId,
       name: productName,
-      quantity: productQuantity
+      quantity: productQuantity,
     };
     setSelectedProduct(product);
     setShowModal(true);
@@ -79,10 +79,19 @@ function Stock() {
               <td className="p-2">{product.description}</td>
               <td className="p-2">{product.brand}</td>
               <td className="p-2">
-                {product.quantity}{" "}
-                <Button onClick={() => openModal(product.id, product.name, product.quantity)}>
-                  <MdEditSquare />
-                </Button>
+                <Stack
+                  direction="horizontal"
+                  className="justify-content-around"
+                >
+                  {product.quantity}
+                  <Button
+                    onClick={() =>
+                      openModal(product.id, product.name, product.quantity)
+                    }
+                  >
+                    <MdEditSquare />
+                  </Button>
+                </Stack>
               </td>
               <td className="p-2">{product.pricePerPack}</td>
               <td className="p-2">{product.pricePerUnit}</td>

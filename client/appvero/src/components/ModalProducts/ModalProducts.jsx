@@ -44,23 +44,24 @@ function ModalProducts(props) {
   };
 
   return (
-    <Modal show={show} onHide={onClose} key={productId} centered>
-      <Modal.Header closeButton>
+    <Modal show={show} onHide={onClose} key={productId} centered >
+      <Modal.Header closeButton >
         <Modal.Title>{name}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Formik initialValues={{ initialQuantity }}>
-          <FormikForm>
-            <Form.Group controlId="initialQuantity">
-              <Form.Label>Stock:</Form.Label>
-              <div className="d-flex align-items-center">
+          <FormikForm >
+            <Form.Group controlId="initialQuantity" >
+              <Form.Label className="d-flex justify-content-center">Stock:</Form.Label>
+              <div className="d-flex align-items-center justify-content-center">
                 <Button variant="secondary" onClick={handleDecrement}>
                   -
                 </Button>
                 <Field
                   type="number"
                   name="initialQuantity"
-                  className="form-control mx-2"
+                  className="form-control mx-2 "
+                  style={{width: '30%'}}
                   value={initialQuantity}
                   onChange={handleChange}
                   onBlur={handleChange}
@@ -78,7 +79,7 @@ function ModalProducts(props) {
           </FormikForm>
         </Formik>
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer className="justify-content-center">
         <Button variant="danger" onClick={onClose}>
           Close
         </Button>
