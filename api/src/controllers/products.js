@@ -81,11 +81,27 @@ const deleteProduct = async(code) => {
   }
 }
 
+const changeQuantity = async(code, quantity) => {
+  try {
+    const product = await Products.findByPk(code)
+    if(product) {
+      product.quantity = quantity
+      await product.save()
+      return product
+    } else {
+      return 'No se encontro el producto'
+    }
+  } catch (error) {
+    return error
+  }
+}
+
 module.exports = {
   getProducts,
   getProductsByName,
   getProductsByCode,
   getProductsById,
   postProduct,
-  deleteProduct
+  deleteProduct,
+  changeQuantity
 }

@@ -1,4 +1,4 @@
-const { getProducts, getProductsByCode, getProductsById, getProductsByName, postProduct, deleteProduct } = require('../controllers/products')
+const { getProducts, getProductsByCode, getProductsById, getProductsByName, postProduct, deleteProduct, changeQuantity } = require('../controllers/products')
 const { validator } = require('../utils/productValidator')
 
 const getAllTheProducts = async (req, res) => {
@@ -81,8 +81,20 @@ const destroyProduct = async (req, res) => {
   }
 }
 
+const modifyQuantity = async (req, res) => {
+  const { productId } = req.params
+  const { quantity } = req.body
+  try {
+    await changeQuantity(productId, quantity)
+    res.status(201).send('Producto actualizado correctamente')
+  } catch (error) {
+    res.status(404).send(error)
+  }
+}
+
 module.exports = {
   getAllTheProducts,
   addProducts,
-  destroyProduct
+  destroyProduct,
+  modifyQuantity
 }
